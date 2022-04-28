@@ -26,23 +26,25 @@ allTests = TestList [
   -- student loan repayments --
   testEqualDouble "Student loan repayment" 0 (studentLoan 20000),
   testEqualDouble "Student loan repayment" 3844.08 (studentLoan 70000),
-  testEqualDouble "Student loan repayment" 15544.08 (studentLoan 200000)
+  testEqualDouble "Student loan repayment" 15544.08 (studentLoan 200000),
   -- student loan repayments --
 
   -- national insurance contributions --
-  --testEqualDouble "National insurance contribution" 1252.32 (nationalInsurance 20000),
-  --testEqualDouble "National insurance contribution" 6235.52 (nationalInsurance 70000),
-  --testEqualDouble "National insurance contribution" 8835.52 (nationalInsurance 200000),
+  testEqualDouble "National insurance contribution" 1252.32 (nationalInsurance 20000),
+  testEqualDouble "National insurance contribution" 6235.52 (nationalInsurance 70000),
+  testEqualDouble "National insurance contribution" 8835.52 (nationalInsurance 200000),
   -- national insurance contributions -- 
 
   -- net income --
-  --testEqualDouble "Total income after tax" 17262.16 (totalIncome 20000),
-  --testEqualDouble "Total income after tax" 49289.16 (totalIncome 70000),
-  --testEqualDouble "Total income after tax" 117161.16 (totalIncome 200000)
+  testEqualDouble "Total income after tax" 17261.68 (totalIncome 20000),
+  testEqualDouble "Total income after tax" 48332.48 (totalIncome 70000),
+  testEqualDouble "Total income after tax" 118089.48 (totalIncome 200000),
   -- net income --
 
   -- net income with student loan --
-
+  testEqualDouble "Total income after tax (including student loan)" 17261.68 (totalStudentIncome 20000),
+  testEqualDouble "Total income after tax (including student loan)" 44488.40 (totalStudentIncome 70000),
+  testEqualDouble "Total income after tax (including student loan)" 102545.40 (totalStudentIncome 200000)
   -- net income with student loan --
   ]
 
@@ -51,5 +53,7 @@ testEqual name result input = TestCase (assertEqual name result input)
 
 testEqualDouble :: String -> Double -> Double -> Test 
 testEqualDouble name result input = TestCase (assertEqual name result input)
+
+
 
 
