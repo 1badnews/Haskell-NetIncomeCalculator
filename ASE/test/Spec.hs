@@ -43,16 +43,14 @@ allTests = TestList [
 
   -- net income with student loan --
   testEqualDouble "Total income after tax (including student loan)" 17261.68 (totalStudentIncome 20000),
-  testEqualDouble "Total income after tax (including student loan)" 44488.40 (totalStudentIncome 70000),
+  testEqualDouble "Total income after tax (including student loan)" 44488.39 (totalStudentIncome 70000),
   testEqualDouble "Total income after tax (including student loan)" 102545.40 (totalStudentIncome 200000)
   -- net income with student loan --
   ]
 
-testEqual :: String -> Int -> Int -> Test 
-testEqual name result input = TestCase (assertEqual name result input)
-
 testEqualDouble :: String -> Double -> Double -> Test 
 testEqualDouble name result input = TestCase (assertEqual name result input)
+
 
 
 
