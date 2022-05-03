@@ -10,6 +10,8 @@ defaultPersonalAllowance = 12570
 personalAllowance :: Double -> Double 
 personalAllowance income = if income > 150000
   then 0
+  else if income > 100000 && income < 150000
+    then defaultPersonalAllowance-((income-100000)/2)
   else defaultPersonalAllowance
 
 studentLoan :: Double -> Double
@@ -33,11 +35,12 @@ nationalInsurance income =
   if income < 9564
     then 0
   else if income > 9564 && income < 50268
-    then ((income-9564)*0.12)*1e2/1e2
-  else (((income-50268-9564)*0.02)+6032.16)*1e2/1e2 
+    then decimalPoint ((income-9564)*0.12)
+  else decimalPoint (((income-50268-9564)*0.02)+6032.16)
 
 totalIncome :: Double -> Double
 totalIncome income = decimalPoint (income - incomeTax income - nationalInsurance income)
 
 totalStudentIncome :: Double -> Double
 totalStudentIncome income = decimalPoint (income -studentLoan income - incomeTax income - nationalInsurance income)
+
